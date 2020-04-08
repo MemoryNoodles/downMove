@@ -12,6 +12,7 @@
     "react-native": "0.59.8",
     "react-native-background-downloader": "^2.2.0",
     "react-native-fs": "^2.13.3",
+    "react-native-static-server": "^0.4.2",
     "react-native-video": "^4.4.2"
   },
   "devDependencies": {
