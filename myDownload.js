@@ -1,15 +1,16 @@
-import { Platform } from "react-native"
+import { Platform, AsyncStorage } from "react-native"
 import fs from 'react-native-fs'
+import Storage from "./util/storage"
 
 /* 文件存储目录 */
-const baseFile = Platform.OS === "ios" ? fs.ExternalStorageDirectoryPath + "/qzspMove" : fs.MainBundlePath + "/qzspMove";
+const baseFile = Platform.OS === "ios" ? fs.MainBundlePath + "/qzspMove" : fs.DocumentDirectoryPath + "/qzspMove";
 fs.exists(baseFile).then(exists => {
     if (!exists) {
         fs.mkdir(baseFile)
     }
 })
 
-class DownloadManager {
+export default class DownloadManager {
     /**
    * 正在进行中的任务
    *  {
@@ -23,7 +24,8 @@ class DownloadManager {
     listeners = new Set();
 
     async startDownloadM3U8(data) {
-
+        // console.log(baseFile,"baseFile");
+        // return 
         //根据url获取到对应的本地目录
         let url = data.url;
         let urlSplits = url.split("/");
@@ -36,15 +38,20 @@ class DownloadManager {
         await fs.mkdir(toDirPath)
         let toFile = toDirPath + "/" + fileName;  //本地存储文件地址
 
+         
+       
+
+
         /* 这里的东西 暂时没有用到 */
         data.maxProgress = 100;
         data.progress = 0;
         data.status = 0;
         data.toFile = toFile;
         data.file = toFile;
+        data.path = path;
         //添加m3u8下载任务到缓存
         //this.allRunningTask.set(data.id, data)
-
+        console.log("开始下载m3u8文件")
         //开始下载m3u8文件
         let task = fs.downloadFile({
             fromUrl: url,
@@ -56,8 +63,8 @@ class DownloadManager {
             },
         });
 
-
-
+          
+   
         let result = await task.promise
         if (result.statusCode == 200) {
             console.log('index.m3u8下载成功', toFile, url, result)
@@ -65,10 +72,11 @@ class DownloadManager {
                 //m3u8下载成功,开始逐步下载ts文件
                 await this.readM3U8File(data, url, toFile, toDirPath, protocolDomain, path)
                 console.log('netlog-', '所有ts文件都下载成功了')
-                //标记下载成功
-
+                // //标记下载成功
+                // 写入本地数据库
+                await  AsyncStorage.setItem(Storage.videoChache, JSON.stringify(data))
             } catch (error) {
-
+                console.log(error)
             }
         } else {
 
@@ -87,6 +95,7 @@ class DownloadManager {
      */
     async readM3U8File(data, m3u8Url, m3u8LocalFile, m3u8LocalDir, protocolDomain, path) {
         let result = await fs.readFile(m3u8LocalFile)
+       // console.log(result,"result")
         let lines = result.split('\n');
 
         let tsUrls = [];
@@ -95,8 +104,11 @@ class DownloadManager {
                 tsUrls.push(line)
             }
         }
+      
+      
         //开始下载key
-        await this.startDownloadKey(protocolDomain + path, m3u8LocalDir)
+        await this.startDownloadKey(`${protocolDomain}/${path}`, m3u8LocalDir)
+        console.log("key 下载成功")
         //设置最大进度，默认为ts文件数为单位
         //this.allRunningTask.get(data.id).maxProgress = tsUrls.length;
         //开始下载ts文件
@@ -111,8 +123,8 @@ class DownloadManager {
     async startDownloadKey(url, toDir) {
         //开始下载key文件
         let task = fs.downloadFile({
-            fromUrl: url + "key.key",
-            toFile: toDir + "key.key",
+            fromUrl: url + "/key.key",
+            toFile: toDir + "/key.key",
 
             begin: function (res) {
             },
@@ -133,6 +145,7 @@ class DownloadManager {
     async startDownloadTS(data, m3u8Url, tsUrls, index, m3u8LocalDir, protocolDomain) {
         /* 所有的jpg下载完成 */
         if (index >= tsUrls.length) {
+            console.log("所有碎片下载成功")
             return;
         };
 
@@ -140,6 +153,7 @@ class DownloadManager {
         //如果ts文件中包含域名 则说明为片头广告 暂时不下载
         if (url.indexOf(protocolDomain) > -1) {
             await this.startDownloadTS(data, m3u8Url, tsUrls, index + 1, m3u8LocalDir, protocolDomain)
+            return 
         }
 
         let downloadUrl = protocolDomain + url;  //网络地址
@@ -148,16 +162,12 @@ class DownloadManager {
         let result = await this.createDownloadTSPromise(downloadUrl, toFile)
 
 
-        if (result.statusCode == 200) {
-            console.log('jpg下载成功了', toFile, downloadUrl, result)
-            //刷新进度
-            //this.allRunningTask.get(data.id).progress = index + 1;
-            //通知出去
-            //this._updatelisteners()
-            await this.startDownloadTS(data, m3u8Url, tsUrls, index + 1, m3u8LocalDir, protocolDomain)
-        }
-
-
+        console.log( index/tsUrls.length, url)
+        //刷新进度
+        //this.allRunningTask.get(data.id).progress = index + 1;
+        //通知出去
+        //this._updatelisteners()
+        await this.startDownloadTS(data, m3u8Url, tsUrls, index + 1, m3u8LocalDir, protocolDomain)
     }
 
     /**
@@ -166,11 +176,13 @@ class DownloadManager {
      * @param {*} file 
      */
     createDownloadTSPromise(url, file) {
+        console.log(url,"url, file")
         let task = fs.downloadFile({
             fromUrl: url,
             toFile: file,
-            // connectionTimeout: 1000 * 60,
-            // readTimeout: 1000 * 60,
+            cacheable:false,
+            connectionTimeout: 1000 * 60 * 20,
+            readTimeout: 1000 * 60 * 20,
             begin: function (res) {
             },
             progress: function (res) {
