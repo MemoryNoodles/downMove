@@ -7,9 +7,9 @@ import {
   Button
 } from 'react-native';
  
-import queueFactory from 'react-native-queue';
+  import queueFactory from 'react-native-queue';
  
-export default class App extends Component  {
+export default class Test extends Component  {
  
   constructor(props) {
     super(props);
@@ -24,47 +24,47 @@ export default class App extends Component  {
  
   async init() {
  
-    const queue = await queueFactory(); 
+  //  const queue = await queueFactory(); 
     //
     // Recursive Job Example
     // This job creates itself over and over.
     //
-    let recursionCounter = 1;
-    queue.addWorker('recursive-example', async (id, payload) => {
-      console.log('recursive-example job '+ id +' started');
-      console.log(recursionCounter, 'recursionCounter');
+    // let recursionCounter = 1;
+    // queue.addWorker('recursive-example', async (id, payload) => {
+    //   console.log('recursive-example job '+ id +' started');
+    //   console.log(recursionCounter, 'recursionCounter');
  
-      recursionCounter++;
+    //   recursionCounter++;
  
-      await new Promise((resolve) => {
-        setTimeout(() => {
-          console.log('recursive-example '+ id +' has completed!');
+    //   await new Promise((resolve) => {
+    //     setTimeout(() => {
+    //       console.log('recursive-example '+ id +' has completed!');
  
-          // Keep creating these jobs until counter reaches 3.
-          if (recursionCounter <= 3) {
-              queue.createJob('recursive-example');
-          }
+    //       // Keep creating these jobs until counter reaches 3.
+    //       if (recursionCounter <= 3) {
+    //           queue.createJob('recursive-example');
+    //       }
  
-          resolve();
-        }, 1000);
-      });
+    //       resolve();
+    //     }, 1000);
+    //   });
  
-    });
+    // });
  
     
  
     // Start queue to process any jobs that hadn't finished when app was last closed.
-    queue.start();
+    // queue.start();
  
-    // Attach initialized queue to state.
-    this.setState({
-      queue
-    });
+    // // Attach initialized queue to state.
+    // this.setState({
+    //   queue
+    // });
  
   }
  
   makeJob(jobName, payload = {}) {
-    this.state.queue.createJob(jobName, payload);
+   // this.state.queue.createJob(jobName, payload);
   }
  
   render() {

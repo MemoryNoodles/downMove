@@ -39,8 +39,8 @@ export default class DownloadManager {
         let toFile = toDirPath + "/" + fileName;  //本地存储文件地址
 
          
-       
-
+        // let aaa = await fs.readFile(toFile);
+        // console.log(aaa,"aaa")
 
         /* 这里的东西 暂时没有用到 */
         data.maxProgress = 100;
@@ -56,16 +56,19 @@ export default class DownloadManager {
         let task = fs.downloadFile({
             fromUrl: url,
             toFile: toFile,
-
+            cacheable:false,
             begin: function (res) {
+                console.log(res,"res")
             },
             progress: function (res) {
+                console.log(res,"progress")
             },
         });
 
           
    
         let result = await task.promise
+       
         if (result.statusCode == 200) {
             console.log('index.m3u8下载成功', toFile, url, result)
             try {
@@ -74,7 +77,7 @@ export default class DownloadManager {
                 console.log('netlog-', '所有ts文件都下载成功了')
                 // //标记下载成功
                 // 写入本地数据库
-                await  AsyncStorage.setItem(Storage.videoChache, JSON.stringify(data))
+               // await  AsyncStorage.setItem(Storage.videoChache, JSON.stringify(data))
             } catch (error) {
                 console.log(error)
             }
@@ -94,7 +97,8 @@ export default class DownloadManager {
      * @param {*} path  “20200324/xttejfbh/10000kb/hls/”
      */
     async readM3U8File(data, m3u8Url, m3u8LocalFile, m3u8LocalDir, protocolDomain, path) {
-        let result = await fs.readFile(m3u8LocalFile)
+        let result = await fs.readFile(m3u8LocalFile);
+       
        // console.log(result,"result")
         let lines = result.split('\n');
 
