@@ -5,39 +5,45 @@ import RNBackgroundDownloader from 'react-native-background-downloader';
 import Video from 'react-native-video';
 import CryptoJS from "crypto-js"
 
- import DownloadManager from "../myDownload"
+import DownloadManager from "../myDownload"
 
 export default class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            url: ""
+            progress: 0
         }
     }
-    /* /20200322/vqPFuj4e/800kb/hls/key.key */
-    componentDidMount() {
-        // //  console.log(RNBackgroundDownloader.directories.documents,"RNBackgroundDownloader.directories.documents")
-        // const storeLocation = `${RNFS.DocumentDirectoryPath}`;
-        // console.log(RNBackgroundDownloader.directories.documents, "RNBackgroundDownloader.directories.documents")
-        // console.log(storeLocation, "storeLocation")
 
-        // create a path you want to write to
-        // let path = RNFS.DocumentDirectoryPath + '/qzspMove';
-        // let server = new StaticServer(8080, path);
-        // // Start the server
-        // server.start().then((url) => {
-        //     console.log("Serving at URL", url);
-        // });
+    componentDidMount() {
+        console.log(this)
+       
+        DownloadManager.addListener(this.callback)
+       
+    }
+
+    componentWillUnmount() {
+      
+        DownloadManager.removeListener(this.callback)
+    }
+
+    callback = () => {
+        //正在进行中的任务
+        let runningTask = DownloadManager.allRunningTask;
+        let progress = runningTask.progress * 100;
+        this.setState({
+            progress: progress.toFixed(2) + "%"
+        })
     }
 
     render() {
-        
-      
-
+        const { progress } = this.state
+        /* https://cdnal.aofdn.com/20200331/AttyIWNA//800kb/hls/index.m3u8? */
+        /* https://cdnal.aofdn.com/20200322/vqPFuj4e/800kb/hls/index.m3u8 */
         return (
             <View style={{ paddingTop: 40 }}>
-                <Text onPress={() => new DownloadManager().startDownloadM3U8({url:"https://cdnal.aofdn.com/20200322/vqPFuj4e/800kb/hls/index.m3u8"})}> 下载 </Text>
-                {/* <Text onPress={() => this.props.navigation.navigate("PlayMove")}>播放</Text> */}
+                <Text onPress={() => DownloadManager.startDownloadM3U8({ url: "https://cdnal.aofdn.com/20200322/vqPFuj4e/800kb/hls/index.m3u8" })}> 下载 </Text>
+                <Text>{progress}</Text>
             </View>
         )
     }

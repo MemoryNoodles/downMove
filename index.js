@@ -8,4 +8,4 @@ import APP from './app/App';
 //  import Test from './test';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => PlayMove);
+AppRegistry.registerComponent(appName, () => APP);

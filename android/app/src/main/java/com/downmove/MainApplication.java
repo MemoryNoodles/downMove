@@ -3,7 +3,7 @@ package com.downmove;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.arthenica.reactnative.RNFFmpegPackage;
+
 import io.realm.react.RealmReactPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.futurepress.staticserver.FPStaticServerPackage;
@@ -30,7 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNFFmpegPackage(),
+            
             new RealmReactPackage(),
             new RNGestureHandlerPackage(),
             new FPStaticServerPackage(),

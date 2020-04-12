@@ -49,7 +49,6 @@
 		1194EC55D39F4491A5D4FDC5 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 103D9EF9617B4F22BE274F16 /* libRealmReact.a */; };
 		908C460DBB97458DB78AE2ED /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 306943703B8E4AC3978BDC0C /* libc++.tbd */; };
 		90B6233CA4574B6BA286BB87 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECFA9CF193F4CF5ADD7642A /* libz.tbd */; };
-		4F551F33FD1143989F7D0571 /* libReactNativeFFmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FDC0BE10004221BDC64C9D /* libReactNativeFFmpeg.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -372,8 +371,6 @@
 		103D9EF9617B4F22BE274F16 /* libRealmReact.a */ = {isa = PBXFileReference; name = "libRealmReact.a"; path = "libRealmReact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		306943703B8E4AC3978BDC0C /* libc++.tbd */ = {isa = PBXFileReference; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		3ECFA9CF193F4CF5ADD7642A /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
-		F0A532E456BA4A82836F1B2B /* ReactNativeFFmpeg.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeFFmpeg.xcodeproj"; path = "../node_modules/react-native-ffmpeg/ios/ReactNativeFFmpeg.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		06FDC0BE10004221BDC64C9D /* libReactNativeFFmpeg.a */ = {isa = PBXFileReference; name = "libReactNativeFFmpeg.a"; path = "libReactNativeFFmpeg.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,7 +407,6 @@
 				1194EC55D39F4491A5D4FDC5 /* libRealmReact.a in Frameworks */,
 				908C460DBB97458DB78AE2ED /* libc++.tbd in Frameworks */,
 				90B6233CA4574B6BA286BB87 /* libz.tbd in Frameworks */,
-				4F551F33FD1143989F7D0571 /* libReactNativeFFmpeg.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,7 +605,6 @@
 				7C487FE224CF4CC8AE92A188 /* FPStaticServer.xcodeproj */,
 				720E346B79374F0DAA8E894B /* RNGestureHandler.xcodeproj */,
 				9C71B4A83C5E49919D9216FE /* RealmReact.xcodeproj */,
-				F0A532E456BA4A82836F1B2B /* ReactNativeFFmpeg.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1237,11 +1232,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/downmove.app/downmove";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1251,7 +1241,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Debug;
@@ -1273,11 +1262,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/downmove.app/downmove";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1287,7 +1271,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Release;
@@ -1316,7 +1299,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Debug;
@@ -1344,7 +1326,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Release;
@@ -1374,11 +1355,6 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1388,7 +1364,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Debug;
@@ -1418,11 +1393,6 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1432,7 +1402,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Release;
@@ -1461,11 +1430,6 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1475,7 +1439,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Debug;
@@ -1504,11 +1467,6 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1518,7 +1476,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Release;
