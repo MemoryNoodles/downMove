@@ -40,7 +40,6 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
-		CF16938C3EAD4FAAAA8A5D8B /* libRNBackgroundDownloader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BFCADE05E848498C5F8A0E /* libRNBackgroundDownloader.a */; };
 		0C8C37B8E9C0446A8498891B /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B01D247BDBFD40CB8872DE3E /* libRCTVideo.a */; };
 		6D22A60F04D242978412DFE6 /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD292CC7487C4532A3946A34 /* libRNFS.a */; };
 		A8DB6332B68946A99DC2B666 /* libFPStaticServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AC8680FEBE4988934A7AD8 /* libFPStaticServer.a */; };
@@ -49,7 +48,6 @@
 		1194EC55D39F4491A5D4FDC5 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 103D9EF9617B4F22BE274F16 /* libRealmReact.a */; };
 		908C460DBB97458DB78AE2ED /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 306943703B8E4AC3978BDC0C /* libc++.tbd */; };
 		90B6233CA4574B6BA286BB87 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECFA9CF193F4CF5ADD7642A /* libz.tbd */; };
-		4F551F33FD1143989F7D0571 /* libReactNativeFFmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FDC0BE10004221BDC64C9D /* libReactNativeFFmpeg.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -357,8 +355,6 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		75CD27CD37E14A93B14DD7A9 /* RNBackgroundDownloader.xcodeproj */ = {isa = PBXFileReference; name = "RNBackgroundDownloader.xcodeproj"; path = "../node_modules/react-native-background-downloader/ios/RNBackgroundDownloader.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		14BFCADE05E848498C5F8A0E /* libRNBackgroundDownloader.a */ = {isa = PBXFileReference; name = "libRNBackgroundDownloader.a"; path = "libRNBackgroundDownloader.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		A3731EA422804B6089AA4AFC /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; name = "RCTVideo.xcodeproj"; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		B01D247BDBFD40CB8872DE3E /* libRCTVideo.a */ = {isa = PBXFileReference; name = "libRCTVideo.a"; path = "libRCTVideo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		B4C8379108CD43CE8F2255F8 /* RNFS.xcodeproj */ = {isa = PBXFileReference; name = "RNFS.xcodeproj"; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
@@ -372,8 +368,6 @@
 		103D9EF9617B4F22BE274F16 /* libRealmReact.a */ = {isa = PBXFileReference; name = "libRealmReact.a"; path = "libRealmReact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		306943703B8E4AC3978BDC0C /* libc++.tbd */ = {isa = PBXFileReference; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		3ECFA9CF193F4CF5ADD7642A /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
-		F0A532E456BA4A82836F1B2B /* ReactNativeFFmpeg.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeFFmpeg.xcodeproj"; path = "../node_modules/react-native-ffmpeg/ios/ReactNativeFFmpeg.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		06FDC0BE10004221BDC64C9D /* libReactNativeFFmpeg.a */ = {isa = PBXFileReference; name = "libReactNativeFFmpeg.a"; path = "libReactNativeFFmpeg.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,7 +396,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				CF16938C3EAD4FAAAA8A5D8B /* libRNBackgroundDownloader.a in Frameworks */,
 				0C8C37B8E9C0446A8498891B /* libRCTVideo.a in Frameworks */,
 				6D22A60F04D242978412DFE6 /* libRNFS.a in Frameworks */,
 				A8DB6332B68946A99DC2B666 /* libFPStaticServer.a in Frameworks */,
@@ -410,7 +403,6 @@
 				1194EC55D39F4491A5D4FDC5 /* libRealmReact.a in Frameworks */,
 				908C460DBB97458DB78AE2ED /* libc++.tbd in Frameworks */,
 				90B6233CA4574B6BA286BB87 /* libz.tbd in Frameworks */,
-				4F551F33FD1143989F7D0571 /* libReactNativeFFmpeg.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,13 +595,11 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				75CD27CD37E14A93B14DD7A9 /* RNBackgroundDownloader.xcodeproj */,
 				A3731EA422804B6089AA4AFC /* RCTVideo.xcodeproj */,
 				B4C8379108CD43CE8F2255F8 /* RNFS.xcodeproj */,
 				7C487FE224CF4CC8AE92A188 /* FPStaticServer.xcodeproj */,
 				720E346B79374F0DAA8E894B /* RNGestureHandler.xcodeproj */,
 				9C71B4A83C5E49919D9216FE /* RealmReact.xcodeproj */,
-				F0A532E456BA4A82836F1B2B /* ReactNativeFFmpeg.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1237,21 +1227,14 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/downmove.app/downmove";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\react-native-background-downloader\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Debug;
@@ -1273,21 +1256,14 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/downmove.app/downmove";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\react-native-background-downloader\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Release;
@@ -1310,13 +1286,11 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\react-native-background-downloader\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Debug;
@@ -1338,13 +1312,11 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\react-native-background-downloader\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Release;
@@ -1374,21 +1346,14 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\react-native-background-downloader\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Debug;
@@ -1418,21 +1383,14 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\react-native-background-downloader\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Release;
@@ -1461,21 +1419,14 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\react-native-background-downloader\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Debug;
@@ -1504,21 +1455,14 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\react-native-background-downloader\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-static-server\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\realm\src/**",
-					"$(SRCROOT)\..\node_modules\react-native-ffmpeg\ios",
 				);
 			};
 			name = Release;

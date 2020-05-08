@@ -3,13 +3,11 @@ package com.downmove;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.arthenica.reactnative.RNFFmpegPackage;
 import io.realm.react.RealmReactPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.futurepress.staticserver.FPStaticServerPackage;
 import com.rnfs.RNFSPackage;
-import com.brentvatne.react.ReactVideoPackage;
-import com.eko.RNBackgroundDownloaderPackage;
+import com.brentvatne.react.ReactVideoPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -30,7 +28,6 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNFFmpegPackage(),
             new RealmReactPackage(),
             new RNGestureHandlerPackage(),
             new FPStaticServerPackage(),
