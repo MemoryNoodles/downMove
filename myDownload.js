@@ -1,7 +1,7 @@
 import { Platform, AsyncStorage } from "react-native"
 import fs from 'react-native-fs'
 import Storage from "./util/storage"
-import { Config } from "@jest/types";
+ 
 
 /* 文件存储目录 */
 const baseFile = Platform.OS === "ios" ? fs.MainBundlePath + "/qzspMove" : fs.DocumentDirectoryPath + "/qzspMove";

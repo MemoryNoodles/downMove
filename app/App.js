@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View } from 'react-native'
-import RNBackgroundDownloader from 'react-native-background-downloader';
+ 
 
 import Video from 'react-native-video';
-import CryptoJS from "crypto-js"
+ 
 
 import DownloadManager from "../myDownload"
 
