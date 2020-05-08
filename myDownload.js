@@ -1,6 +1,7 @@
 import { Platform, AsyncStorage } from "react-native"
 import fs from 'react-native-fs'
 import Storage from "./util/storage"
+import { Config } from "@jest/types";
 
 /* 文件存储目录 */
 const baseFile = Platform.OS === "ios" ? fs.MainBundlePath + "/qzspMove" : fs.DocumentDirectoryPath + "/qzspMove";
@@ -10,21 +11,67 @@ fs.exists(baseFile).then(exists => {
     }
 })
 
-export default class DownloadManager {
+class DownloadManager {
     /**
    * 正在进行中的任务
    *  {
-   *    maxProgress: 100,
+   *   
         progress: 0,
         status:0, // 0 运行中 -1 失败 2成功
         toFile:toFile,
    *  }
    */
-    allRunningTask = new Map()
+    allRunningTask = {};
     listeners = new Set();
+    /* 刷新进度就靠它了 */
+    addListener(listener = () => { }) {
+        this.listeners.add(listener)
+    }
+
+    removeListener(listener = () => { }) {
+        if (this.listeners.has(listener)) {
+            this.listeners.delete(listener)
+        }
+    }
+
+    /**
+     * 观察者模式，对外发送通知
+     */
+    _updatelisteners() {
+        for (let listener of this.listeners) {
+            listener && listener();
+        }
+    }
+
+    isEmpty(object) {
+        if (JSON.stringify(object) === '{}') {
+            return false
+        }
+        return true
+    }
 
     async startDownloadM3U8(data) {
-        // console.log(baseFile,"baseFile");
+        //目前有下载的视频 直接return
+        if (this.isEmpty(this.allRunningTask)) {
+            //tipMsg("目前有视频正在下载中！")
+            return
+        }
+
+        //查询本地已经下载成功的视频
+        let videos = await AsyncStorage.getItem(Storage.videoChache);
+        videos = videos ? JSON.parse(videos) : [];
+       
+        let localFile;
+        for (let i = 0; i < videos.length; i++) {
+            if (videos[i].id == data.id) {
+                localFile = obj.file;
+            }
+        }
+
+        if (localFile) {
+            //提示已经下载过该视频
+        }
+
         // return 
         //根据url获取到对应的本地目录
         let url = data.url;
@@ -38,37 +85,31 @@ export default class DownloadManager {
         await fs.mkdir(toDirPath)
         let toFile = toDirPath + "/" + fileName;  //本地存储文件地址
 
-         
-        // let aaa = await fs.readFile(toFile);
-        // console.log(aaa,"aaa")
-
-        /* 这里的东西 暂时没有用到 */
-        data.maxProgress = 100;
         data.progress = 0;
         data.status = 0;
         data.toFile = toFile;
         data.file = toFile;
         data.path = path;
         //添加m3u8下载任务到缓存
-        //this.allRunningTask.set(data.id, data)
+        this.allRunningTask = data
         console.log("开始下载m3u8文件")
         //开始下载m3u8文件
         let task = fs.downloadFile({
             fromUrl: url,
             toFile: toFile,
-            cacheable:false,
+            cacheable: false,
             begin: function (res) {
-                console.log(res,"res")
+                console.log(res, "res")
             },
             progress: function (res) {
-                console.log(res,"progress")
+                console.log(res, "progress")
             },
         });
 
-          
-   
+
+
         let result = await task.promise
-       
+        console.log(result,"result")
         if (result.statusCode == 200) {
             console.log('index.m3u8下载成功', toFile, url, result)
             try {
@@ -76,13 +117,15 @@ export default class DownloadManager {
                 await this.readM3U8File(data, url, toFile, toDirPath, protocolDomain, path)
                 console.log('netlog-', '所有ts文件都下载成功了')
                 // //标记下载成功
+
                 // 写入本地数据库
-               // await  AsyncStorage.setItem(Storage.videoChache, JSON.stringify(data))
+                await AsyncStorage.setItem(Storage.videoChache, JSON.stringify(data))
             } catch (error) {
                 console.log(error)
+                this.allRunningTask.status = -1 //下载出现异常
             }
         } else {
-
+            this.allRunningTask.status = -1
         }
 
     }
@@ -98,8 +141,8 @@ export default class DownloadManager {
      */
     async readM3U8File(data, m3u8Url, m3u8LocalFile, m3u8LocalDir, protocolDomain, path) {
         let result = await fs.readFile(m3u8LocalFile);
-       
-       // console.log(result,"result")
+
+        // console.log(result,"result")
         let lines = result.split('\n');
 
         let tsUrls = [];
@@ -108,13 +151,13 @@ export default class DownloadManager {
                 tsUrls.push(line)
             }
         }
-      
-      
+
+
         //开始下载key
         await this.startDownloadKey(`${protocolDomain}/${path}`, m3u8LocalDir)
         console.log("key 下载成功")
-        //设置最大进度，默认为ts文件数为单位
-        //this.allRunningTask.get(data.id).maxProgress = tsUrls.length;
+
+
         //开始下载ts文件
         await this.startDownloadTS(data, m3u8Url, tsUrls, 0, m3u8LocalDir, protocolDomain);
     }
@@ -157,7 +200,7 @@ export default class DownloadManager {
         //如果ts文件中包含域名 则说明为片头广告 暂时不下载
         if (url.indexOf(protocolDomain) > -1) {
             await this.startDownloadTS(data, m3u8Url, tsUrls, index + 1, m3u8LocalDir, protocolDomain)
-            return 
+            return
         }
 
         let downloadUrl = protocolDomain + url;  //网络地址
@@ -166,11 +209,11 @@ export default class DownloadManager {
         let result = await this.createDownloadTSPromise(downloadUrl, toFile)
 
 
-        console.log( index/tsUrls.length, url)
+        console.log(index / tsUrls.length, url)
         //刷新进度
-        //this.allRunningTask.get(data.id).progress = index + 1;
+        this.allRunningTask.progress = (index + 1) / tsUrls.length;
         //通知出去
-        //this._updatelisteners()
+        this._updatelisteners()
         await this.startDownloadTS(data, m3u8Url, tsUrls, index + 1, m3u8LocalDir, protocolDomain)
     }
 
@@ -180,11 +223,11 @@ export default class DownloadManager {
      * @param {*} file 
      */
     createDownloadTSPromise(url, file) {
-        console.log(url,"url, file")
+        console.log(url, "url, file")
         let task = fs.downloadFile({
             fromUrl: url,
             toFile: file,
-            cacheable:false,
+            cacheable: false,
             connectionTimeout: 1000 * 60 * 20,
             readTimeout: 1000 * 60 * 20,
             begin: function (res) {
@@ -197,5 +240,9 @@ export default class DownloadManager {
 
 
 }
+
+const DownloadManagerInstance = new DownloadManager()
+
+export default DownloadManagerInstance;
 
 
